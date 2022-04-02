@@ -2,7 +2,7 @@
 
 module AuditLog
   class LogsController < ActionController::Base
-    before_action :set_log, only: %i[show destroy]
+    before_action :set_log, only: %i[show]
 
     def index
       @logs = AuditLog::Log.order('id desc').includes(:user)

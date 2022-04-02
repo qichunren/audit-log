@@ -14,11 +14,17 @@ module AuditLog
       validates :action, presence: true
 
       after_initialize :initialize_payload_request
+      before_destroy :stop_destroy
     end
 
     def initialize_payload_request
       self.payload = {} if payload.nil?
       self.request = {} if request.nil?
+    end
+
+    def stop_destroy
+      errors.add(:base, :undestroyable)
+      throw :abort
     end
 
     def user_name
