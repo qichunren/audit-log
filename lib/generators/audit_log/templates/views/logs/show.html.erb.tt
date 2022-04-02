@@ -1,5 +1,5 @@
 <div class="toolbar">
-  <%%= link_to 'Back', logs_path, class: 'btn' %>
+  <%%= link_to 'Back', main_app.audit_log_logs_path, class: 'btn' %>
 </div>
 
 <div class="audit-log-detail">
