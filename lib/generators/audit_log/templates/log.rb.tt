@@ -2,6 +2,6 @@
 
 module AuditLog
   class Log < ActiveRecord::Base
-    include AuditLog::Model
+    include AuditLog::Auditable
   end
 end
