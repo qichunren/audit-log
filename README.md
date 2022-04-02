@@ -38,6 +38,23 @@ Generate files:
 $ rails g audit_log:install
 ```
 
+The generators will generate following files:
+
+```
+$ ./bin/rails g audit_log:install
+    create  app/models/audit_log/log.rb
+    create  app/models/audit_log/auditable.rb
+    create  app/controllers/audit_log/logs_controller.rb
+    create  app/views/audit_log/logs/index.html.erb
+    create  app/views/audit_log/logs/show.html.erb
+      route
+                namespace :audit_log do
+                  resources :logs, only: [:index, :show]
+                end
+```
+
+
+
 ## Usage
 
 Use in controllers:
@@ -89,16 +106,6 @@ In models or other places:
 AuditLog.audit!(:update_password, @user, payload: { ip: request.remote_ip })
 AuditLog.audit!(:sign_in, @user, payload: { ip: request.remote_ip })
 AuditLog.audit!(:create_address, nil, payload: params)
-```
-
-Change `config/routes.rb` to add Route:
-
-```rb
-Rails.application.routes.draw do
-  authenticate :user, -> (u) { u.admin? } do
-    mount AuditLog::Engine => "/audit-log"
-  end
-end
 ```
 
 I18n for audit names, you need create a `config/locales/audit-log.zh-CN.yml`:

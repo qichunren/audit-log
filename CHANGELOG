@@ -1,3 +1,8 @@
+edge:
+-----
+
+- Remove builtin controller / model / views, the generator `audit_log:install` will generate these files for main app.
+
 1.1.0
 -----
 
