@@ -16,7 +16,10 @@
 <%% if @logs.blank? %>
   <div class="no-record">No audit logs.</div>
 <%% else %>
-  <%%= paginate @logs %>
+  <div class="grid border-t bg-gray-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:grid-cols-9">
+    <!-- Pagination -->
+    <span class="mt-2 sm:mt-auto sm:justify-end"> <%== pagy_nav(@pagy) %> </span>
+  </div>
 
   <table class="table table-borded">
     <thead>
@@ -44,5 +47,8 @@
     </tbody>
   </table>
 
-  <%%= paginate @logs %>
+  <div class="grid border-t bg-gray-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:grid-cols-9">
+      <!-- Pagination -->
+      <span class="mt-2 sm:mt-auto sm:justify-end"> <%== pagy_nav(@pagy) %> </span>
+    </div>
 <%% end %>
