@@ -5,8 +5,8 @@ module AuditLog
     included do
       self.table_name = 'audit_logs'
 
-      serialize :payload, JSON
-      serialize :request, JSON
+      serialize :payload, coder: JSON
+      serialize :request, coder: JSON
 
       belongs_to :user, class_name: AuditLog.config.user_class, required: false
       belongs_to :record, polymorphic: true, required: false
